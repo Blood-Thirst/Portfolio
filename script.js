@@ -143,37 +143,61 @@ document.addEventListener("DOMContentLoaded", (event) => {
     });
   });
 
-  // Contact Form submission (basic alert functionality)
   const contactForm = document.getElementById("contactForm");
   if (contactForm) {
     contactForm.addEventListener("submit", function (e) {
       e.preventDefault(); // Prevent default form submission
 
-      // Get form data (optional, as we only show alert now)
+      const formData = new FormData(contactForm);
+      const status = document.getElementById("form-status");
       const nameInput = document.getElementById("name");
-      const name = nameInput ? nameInput.value : "there"; // Fallback name
+      const name = nameInput ? nameInput.value : "there";
 
-      // Basic validation example (can be expanded)
-      if (
-        !document.getElementById("email").value ||
-        !document.getElementById("message").value
-      ) {
+      // Optional basic validation
+      if (!formData.get("email") || !formData.get("message")) {
         alert("Please fill in all required fields.");
         return;
       }
 
-      // Replace with actual form submission logic (e.g., fetch API call)
-      console.log("Form submitted (simulated)");
-      console.log("Name:", document.getElementById("name").value);
-      console.log("Email:", document.getElementById("email").value);
-      console.log("Subject:", document.getElementById("subject").value);
-      console.log("Message:", document.getElementById("message").value);
-
-      // Show confirmation alert
-      alert(`Thanks for your message, ${name}! I'll get back to you soon.`);
-
-      // Reset form after submission
-      contactForm.reset();
+      fetch(contactForm.action, {
+        method: contactForm.method,
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      })
+        .then((response) => {
+          if (response.ok) {
+            if (status) {
+              status.innerHTML =
+                "<span style='color: green;'>✅ Message sent successfully!</span>";
+            } else {
+              alert(
+                `Thanks for your message, ${name}! I'll get back to you soon.`
+              );
+            }
+            contactForm.reset();
+          } else {
+            response.json().then((data) => {
+              const errorMsg = data.errors
+                ? data.errors.map((err) => err.message).join(", ")
+                : "Something went wrong. Please try again.";
+              if (status) {
+                status.innerHTML = `<span style='color: red;'>❌ ${errorMsg}</span>`;
+              } else {
+                alert(errorMsg);
+              }
+            });
+          }
+        })
+        .catch((error) => {
+          if (status) {
+            status.innerHTML =
+              "<span style='color: red;'>❌ Network error. Please try again later.</span>";
+          } else {
+            alert("Network error. Please try again later.");
+          }
+        });
     });
   }
 
@@ -194,17 +218,4 @@ document.addEventListener("DOMContentLoaded", (event) => {
     heroImage.style.opacity = "1";
     heroImage.style.transform = "translateX(0)";
   }
-
-  // Skill tag hover effect (alternative using JS if needed, CSS handles it now)
-  /*
-    const skillTags = document.querySelectorAll('.skill-tag');
-    skillTags.forEach(tag => {
-        tag.addEventListener('mouseenter', () => {
-            tag.style.transform = 'translateY(-3px)';
-        });
-        tag.addEventListener('mouseleave', () => {
-            tag.style.transform = 'translateY(0)';
-        });
-    });
-    */
 }); // End DOMContentLoaded
