@@ -1241,4 +1241,48 @@ footer {
   .contact-icon {
     margin-right: 0;
   }
+
+  /* Hero Section Specific Styles for Mobile */
+  .hero {
+    display: block; /* Make hero a block-level container */
+  }
+
+  .hero .container {
+    display: block; /* Ensure container is also block */
+    padding: 50px 0; /* Adjust vertical padding */
+  }
+
+  .hero-content {
+    display: block; /* Stack content on smaller screens */
+    width: 100%; /* Full width for content */
+    padding-right: 0; /* Remove any right padding */
+    margin: 0 auto 20px; /* Center and add bottom margin */
+    text-align: center; /* Center text within content */
+  }
+
+  .hero-image {
+    display: block; /* Stack image on smaller screens */
+    width: 100%; /* Full width for image */
+    margin: 0 auto 30px; /* Center and add bottom margin */
+    text-align: center; /* Center the image */
+    transform: translateX(0); /* Reset any horizontal transform */
+  }
+
+  .hero .social-links {
+    justify-content: center; /* Center social links */
+  }
+
+  .hero .cta-buttons {
+    display: flex; /* Use flex to control button layout */
+    flex-direction: column; /* Stack buttons vertically */
+    align-items: center; /* Center buttons horizontally */
+  }
+
+  .hero .btn {
+    width: 100%; /* Full width for buttons */
+    max-width: 300px; /* Limit maximum width of buttons */
+    margin-right: 0; /* Remove right margin */
+    margin-bottom: 10px; /* Add bottom margin between buttons */
+    text-align: center; /* Center text within buttons (already set by .btn) */
+  }
 }
