@@ -13,6 +13,7 @@
   --transition: all 0.3s ease;
 }
 
+/* Base Styles */
 body {
   margin: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -22,9 +23,48 @@ body {
   color: var(--light-text);
 }
 
-body.dark-mode {
+.dark-mode {
   background-color: var(--dark-bg);
   color: var(--dark-text);
+}
+
+.container {
+  width: 85%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-padding {
+  padding: 100px 0;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 60px;
+  position: relative;
+}
+
+.section-title h2 {
+  font-size: 2.5rem;
+  color: var(--light-text);
+  margin-bottom: 20px;
+  display: inline-block;
+  position: relative;
+}
+
+.dark-mode .section-title h2 {
+  color: var(--dark-text);
+}
+
+.section-title h2::after {
+  content: "";
+  position: absolute;
+  width: 80px;
+  height: 4px;
+  background-color: var(--primary-color);
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 /* Header & Navigation */
@@ -39,15 +79,9 @@ header {
   transition: var(--transition);
 }
 
-body.dark-mode header {
+.dark-mode header {
   background-color: var(--card-dark);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-}
-
-.container {
-  width: 85%;
-  max-width: 1200px;
-  margin: 0 auto;
 }
 
 .nav-container {
@@ -82,7 +116,7 @@ nav ul li a {
   position: relative;
 }
 
-body.dark-mode nav ul li a {
+.dark-mode nav ul li a {
   color: var(--dark-text);
 }
 
@@ -110,10 +144,10 @@ nav ul li a:hover::after {
   font-size: 20px;
   color: var(--light-text);
   transition: var(--transition);
-  margin-left: 30px; /* Added margin for spacing */
+  margin-left: 30px;
 }
 
-body.dark-mode .theme-toggle {
+.dark-mode .theme-toggle {
   color: var(--dark-text);
 }
 
@@ -124,16 +158,16 @@ body.dark-mode .theme-toggle {
   font-size: 24px;
   cursor: pointer;
   color: var(--light-text);
-  margin-left: 15px; /* Added margin for spacing */
+  margin-left: 15px;
 }
 
-body.dark-mode .mobile-menu-btn {
+.dark-mode .mobile-menu-btn {
   color: var(--dark-text);
 }
 
 /* Main Content */
 main {
-  margin-top: 90px; /* Adjust based on header height */
+  margin-top: 90px;
   min-height: 100vh;
 }
 
@@ -142,39 +176,47 @@ main {
   display: flex;
   align-items: center;
   padding: 80px 0;
-  min-height: calc(100vh - 90px); /* Adjust based on header height */
-  box-sizing: border-box; /* Include padding in height calculation */
+  min-height: calc(100vh - 90px);
+  box-sizing: border-box;
+}
+
+.hero .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 85%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 0;
 }
 
 .hero-content {
-  flex: 1;
+  flex-basis: 50%;
+  padding-right: 5%;
   opacity: 0;
   transform: translateY(30px);
-  /* Initial state for animation - will be overridden by JS on load */
 }
 
 .hero-image {
-  flex: 1;
+  flex-basis: 25%;
   text-align: right;
   opacity: 0;
   transform: translateX(30px);
-  /* Initial state for animation - will be overridden by JS on load */
 }
 
 .hero-image img {
   max-width: 80%;
-  /* Adjusted width for potentially smaller screens */
-  max-height: 350px; /* Added max-height */
-  width: auto; /* Maintain aspect ratio */
-  height: auto; /* Maintain aspect ratio */
+  max-height: 350px;
+  width: auto;
+  height: auto;
   border-radius: 50%;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   transition: var(--transition);
   border: 8px solid var(--card-light);
-  object-fit: cover; /* Ensure image covers the area */
+  object-fit: cover;
 }
 
-body.dark-mode .hero-image img {
+.dark-mode .hero-image img {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   border-color: var(--card-dark);
 }
@@ -194,10 +236,12 @@ h1 span {
   margin-bottom: 30px;
   max-width: 80%;
   color: var(--secondary-color);
+  text-align: justify;
 }
 
-body.dark-mode .hero p {
+.dark-mode .hero p {
   color: #adb5bd;
+  text-align: justify;
 }
 
 .social-links {
@@ -216,7 +260,7 @@ body.dark-mode .hero p {
   border-radius: 50%;
   margin-right: 15px;
   transition: var(--transition);
-  text-decoration: none; /* Ensure icons are not underlined */
+  text-decoration: none;
 }
 
 .social-links a:hover {
@@ -239,12 +283,12 @@ body.dark-mode .hero p {
   transition: var(--transition);
   margin-right: 15px;
   border: 2px solid var(--primary-color);
-  margin-bottom: 10px; /* Added for stacking on small screens */
+  margin-bottom: 10px;
 }
 
 .btn:hover {
   background-color: var(--primary-dark);
-  border-color: var(--primary-dark); /* Ensure border color changes too */
+  border-color: var(--primary-dark);
   transform: translateY(-3px);
   box-shadow: 0 10px 20px rgba(74, 108, 247, 0.2);
 }
@@ -255,7 +299,7 @@ body.dark-mode .hero p {
   border: 2px solid var(--primary-color);
 }
 
-body.dark-mode .btn-outline {
+.dark-mode .btn-outline {
   color: var(--dark-text);
 }
 
@@ -271,44 +315,15 @@ body.dark-mode .btn-outline {
   transition: var(--transition);
 }
 
-body.dark-mode .about {
+.dark-mode .about {
   background-color: var(--card-dark);
-}
-
-.section-title {
-  text-align: center;
-  margin-bottom: 60px;
-  position: relative;
-}
-
-.section-title h2 {
-  font-size: 2.5rem;
-  color: var(--light-text);
-  margin-bottom: 20px; /* Increased margin */
-  display: inline-block; /* Needed for ::after positioning relative to text */
-  position: relative; /* Needed for ::after positioning */
-}
-
-body.dark-mode .section-title h2 {
-  color: var(--dark-text);
-}
-
-.section-title h2::after {
-  content: "";
-  position: absolute;
-  width: 80px;
-  height: 4px;
-  background-color: var(--primary-color);
-  bottom: -15px; /* Adjusted position */
-  left: 50%;
-  transform: translateX(-50%);
 }
 
 .about-content {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 40px; /* Added gap */
+  gap: 40px;
 }
 
 .about-image {
@@ -316,17 +331,17 @@ body.dark-mode .section-title h2 {
   min-width: 300px;
   opacity: 0;
   transform: translateX(-30px);
-  text-align: center; /* Center image */
+  text-align: center;
 }
 
 .about-image img {
   max-width: 100%;
   height: auto;
-  border-radius: 10px; /* Added border radius */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Added subtle shadow */
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
-body.dark-mode .about-image img {
+.dark-mode .about-image img {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
@@ -336,7 +351,6 @@ body.dark-mode .about-image img {
 
 .about-text {
   flex: 1;
-  /* padding: 0 30px; No padding needed due to gap */
   min-width: 300px;
   opacity: 0;
   transform: translateX(30px);
@@ -349,12 +363,13 @@ body.dark-mode .about-image img {
 .about-text h3 {
   font-size: 2rem;
   margin-bottom: 20px;
-  color: var(--primary-color); /* Added color */
+  color: var(--primary-color);
 }
 
 .about-text p {
   margin-bottom: 20px;
   line-height: 1.8;
+  text-align: justify;
 }
 
 .skills {
@@ -379,7 +394,7 @@ body.dark-mode .about-image img {
   border-radius: 20px;
   font-size: 0.9rem;
   transition: var(--transition);
-  cursor: default; /* Indicate non-interactive */
+  cursor: default;
 }
 
 .skill-tag:hover {
@@ -409,7 +424,7 @@ body.dark-mode .about-image img {
   bottom: 0;
   left: 50%;
   margin-left: -2px;
-  z-index: 0; /* Ensure line is behind items */
+  z-index: 0;
 }
 
 .timeline-item {
@@ -419,11 +434,11 @@ body.dark-mode .about-image img {
   box-sizing: border-box;
   opacity: 0;
   transform: translateY(30px);
-  margin-bottom: 40px; /* Added margin between items */
+  margin-bottom: 40px;
 }
 
 .timeline-item:last-child {
-  margin-bottom: 0; /* No margin for the last item */
+  margin-bottom: 0;
 }
 
 .timeline-item.animate {
@@ -432,12 +447,12 @@ body.dark-mode .about-image img {
 
 .timeline-item:nth-child(odd) {
   left: 0;
-  padding-right: 25px; /* Add padding for arrow */
+  padding-right: 25px;
 }
 
 .timeline-item:nth-child(even) {
   left: 50%;
-  padding-left: 25px; /* Add padding for arrow */
+  padding-left: 25px;
 }
 
 .timeline-content {
@@ -446,11 +461,10 @@ body.dark-mode .about-image img {
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   transition: var(--transition);
-  position: relative; /* Needed for arrow */
-  z-index: 1; /* Ensure content is above line */
+  position: relative;
+  z-index: 1;
 }
 
-/* Timeline arrow (optional, enhances visual connection) */
 .timeline-content::before {
   content: "";
   position: absolute;
@@ -461,25 +475,25 @@ body.dark-mode .about-image img {
 }
 
 .timeline-item:nth-child(odd) .timeline-content::before {
-  right: -10px; /* Position arrow pointing right */
+  right: -10px;
   border-width: 10px 0 10px 10px;
   border-color: transparent transparent transparent var(--card-light);
 }
 
 .timeline-item:nth-child(even) .timeline-content::before {
-  left: -10px; /* Position arrow pointing left */
+  left: -10px;
   border-width: 10px 10px 10px 0;
   border-color: transparent var(--card-light) transparent transparent;
 }
 
-body.dark-mode .timeline-item:nth-child(odd) .timeline-content::before {
+.dark-mode .timeline-item:nth-child(odd) .timeline-content::before {
   border-color: transparent transparent transparent var(--card-dark);
 }
-body.dark-mode .timeline-item:nth-child(even) .timeline-content::before {
+.dark-mode .timeline-item:nth-child(even) .timeline-content::before {
   border-color: transparent var(--card-dark) transparent transparent;
 }
 
-body.dark-mode .timeline-content {
+.dark-mode .timeline-content {
   background-color: var(--card-dark);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
@@ -489,26 +503,25 @@ body.dark-mode .timeline-content {
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
 }
 
-body.dark-mode .timeline-content:hover {
+.dark-mode .timeline-content:hover {
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
 }
 
-/* Timeline Dot */
 .timeline-item::after {
   content: "";
   position: absolute;
   width: 20px;
   height: 20px;
   background-color: var(--primary-color);
-  border: 4px solid var(--light-bg); /* Creates a 'hollow' effect */
+  border: 4px solid var(--light-bg);
   border-radius: 50%;
-  top: 35px; /* Adjust vertical position */
-  right: -10px; /* Center on the line */
+  top: 35px;
+  right: -10px;
   transform: translateX(-50%);
-  z-index: 2; /* Ensure dot is above line and content arrow */
+  z-index: 2;
 }
 
-body.dark-mode .timeline-item::after {
+.dark-mode .timeline-item::after {
   border-color: var(--dark-bg);
 }
 
@@ -524,12 +537,10 @@ body.dark-mode .timeline-item::after {
   transform: translateX(-50%);
 }
 
-/* Removed timeline ::before rule as it's not needed with the dot/arrow approach */
-
 .timeline-content h3 {
   margin-top: 0;
   color: var(--primary-color);
-  font-size: 1.4rem; /* Slightly larger */
+  font-size: 1.4rem;
 }
 
 .timeline-content .date {
@@ -537,16 +548,17 @@ body.dark-mode .timeline-item::after {
   font-style: italic;
   margin-bottom: 15px;
   display: block;
-  font-size: 0.9rem; /* Slightly smaller */
+  font-size: 0.9rem;
 }
 
-body.dark-mode .timeline-content .date {
+.dark-mode .timeline-content .date {
   color: #adb5bd;
 }
 
 .timeline-content p {
-  margin-bottom: 10px; /* Less margin between paragraphs */
+  margin-bottom: 10px;
   line-height: 1.7;
+  text-align: justify;
 }
 .timeline-content p:last-child {
   margin-bottom: 0;
@@ -559,16 +571,13 @@ body.dark-mode .timeline-content .date {
   transition: var(--transition);
 }
 
-body.dark-mode .projects {
+.dark-mode .projects {
   background-color: var(--card-dark);
 }
 
 .project-cards {
   display: grid;
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(320px, 1fr)
-  ); /* Adjusted minmax */
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 30px;
 }
 
@@ -580,27 +589,26 @@ body.dark-mode .projects {
   transition: var(--transition);
   opacity: 0;
   transform: translateY(30px);
-  display: flex; /* Added flex */
-  flex-direction: column; /* Stack image and info */
+  display: flex;
+  flex-direction: column;
 }
 
 .project-card.animate {
   animation: fadeInUp 1s forwards;
-  /* Apply delay based on index? - More complex, requires JS */
 }
 
-body.dark-mode .project-card {
+.dark-mode .project-card {
   background-color: var(--dark-bg);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  border: 1px solid var(--border-dark); /* Subtle border in dark mode */
+  border: 1px solid var(--border-dark);
 }
 
 .project-card:hover {
-  transform: translateY(-10px) scale(1.03); /* Added subtle scale */
+  transform: translateY(-10px) scale(1.03);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
 }
 
-body.dark-mode .project-card:hover {
+.dark-mode .project-card:hover {
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
 }
 
@@ -608,49 +616,51 @@ body.dark-mode .project-card:hover {
   width: 100%;
   height: 200px;
   object-fit: cover;
-  display: block; /* Remove extra space below image */
+  display: block;
 }
 
 .project-info {
   padding: 25px;
-  flex-grow: 1; /* Allow info to take remaining space */
-  display: flex; /* Use flex for inner content */
-  flex-direction: column; /* Stack title, p, tags */
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .project-info h3 {
   margin-top: 0;
-  margin-bottom: 15px; /* Added margin */
+  margin-bottom: 15px;
   color: var(--light-text);
   transition: var(--transition);
-  font-size: 1.3rem; /* Adjusted size */
+  font-size: 1.3rem;
 }
 
-body.dark-mode .project-info h3 {
+.dark-mode .project-info h3 {
   color: var(--dark-text);
 }
 
 .project-info p {
   color: var(--secondary-color);
   margin-bottom: 20px;
-  flex-grow: 1; /* Allow paragraph to push tags down */
-  font-size: 0.95rem; /* Adjusted size */
+  flex-grow: 1;
+  font-size: 0.95rem;
+  text-align: justify;
 }
 
-body.dark-mode .project-info p {
+.dark-mode .project-info p {
   color: #adb5bd;
+  text-align: justify;
 }
 
 .project-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: auto; /* Push tags to the bottom */
+  margin-top: auto;
 }
 
 .project-tag {
   font-size: 0.8rem;
-  padding: 5px 12px; /* Adjusted padding */
+  padding: 5px 12px;
   background-color: rgba(74, 108, 247, 0.1);
   color: var(--primary-color);
   border-radius: 15px;
@@ -700,6 +710,7 @@ body.dark-mode .project-info p {
 .contact-info p {
   margin-bottom: 30px;
   line-height: 1.8;
+  text-align: justify;
 }
 
 .contact-details {
@@ -724,7 +735,7 @@ body.dark-mode .project-info p {
   color: var(--primary-color);
   font-size: 1.2rem;
   transition: var(--transition);
-  flex-shrink: 0; /* Prevent icon from shrinking */
+  flex-shrink: 0;
 }
 
 .contact-detail:hover .contact-icon {
@@ -741,11 +752,52 @@ body.dark-mode .project-info p {
 .contact-detail-text p {
   margin: 0;
   color: var(--secondary-color);
-  word-break: break-word; /* Break long emails/links */
+  word-break: break-word;
 }
 
-body.dark-mode .contact-detail-text p {
+.dark-mode .contact-detail-text p {
   color: #adb5bd;
+}
+
+.contact-detail-text p a.linkedin-link {
+  color: #adb5bd;
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.contact-detail-text p a.linkedin-link:hover {
+  color: var(--primary-color);
+  /* text-decoration: underline; Removed this line */
+}
+
+.contact-detail-text p a[href^="mailto:"] {
+  color: #adb5bd;
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.contact-detail-text p a[href^="mailto:"]:hover {
+  color: var(--primary-color);
+}
+
+.contact-detail-text p a.location-link {
+  color: #adb5bd;
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.contact-detail-text p a.location-link:hover {
+  color: var(--primary-color);
+}
+
+.contact-detail-text p a.phone-link {
+  color: #adb5bd;
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.contact-detail-text p a.phone-link:hover {
+  color: var(--primary-color);
 }
 
 form {
@@ -756,7 +808,7 @@ form {
   transition: var(--transition);
 }
 
-body.dark-mode form {
+.dark-mode form {
   background-color: var(--card-dark);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
@@ -780,10 +832,10 @@ body.dark-mode form {
   transition: var(--transition);
   background-color: var(--light-bg);
   color: var(--light-text);
-  box-sizing: border-box; /* Include padding in width */
+  box-sizing: border-box;
 }
 
-body.dark-mode .form-control {
+.dark-mode .form-control {
   border-color: var(--border-dark);
   background-color: var(--dark-bg);
   color: var(--dark-text);
@@ -811,12 +863,12 @@ textarea.form-control {
   cursor: pointer;
   transition: var(--transition);
   width: 100%;
-  border: 2px solid var(--primary-color); /* Added border */
+  border: 2px solid var(--primary-color);
 }
 
 .submit-btn:hover {
   background-color: var(--primary-dark);
-  border-color: var(--primary-dark); /* Match border */
+  border-color: var(--primary-dark);
   transform: translateY(-3px);
   box-shadow: 0 10px 20px rgba(74, 108, 247, 0.2);
 }
@@ -827,10 +879,10 @@ footer {
   padding: 60px 0 30px;
   text-align: center;
   transition: var(--transition);
-  border-top: 1px solid var(--border-light); /* Added top border */
+  border-top: 1px solid var(--border-light);
 }
 
-body.dark-mode footer {
+.dark-mode footer {
   background-color: var(--card-dark);
   border-top-color: var(--border-dark);
 }
@@ -838,7 +890,7 @@ body.dark-mode footer {
 .footer-content {
   max-width: 600px;
   margin: 0 auto;
-  padding: 0 15px; /* Add padding for smaller screens */
+  padding: 0 15px;
 }
 
 .footer-logo {
@@ -886,7 +938,7 @@ body.dark-mode footer {
   font-size: 0.95rem;
 }
 
-body.dark-mode .footer-links a {
+.dark-mode .footer-links a {
   color: var(--dark-text);
 }
 
@@ -902,7 +954,7 @@ body.dark-mode .footer-links a {
   font-size: 0.9rem;
 }
 
-body.dark-mode .footer-bottom {
+.dark-mode .footer-bottom {
   border-top-color: var(--border-dark);
   color: #adb5bd;
 }
@@ -944,20 +996,20 @@ body.dark-mode .footer-bottom {
 /* Responsive Styles */
 @media (max-width: 991px) {
   h1 {
-    font-size: 2.8rem; /* Slightly smaller on medium screens */
+    font-size: 2.8rem;
   }
 
   .hero {
-    flex-direction: column-reverse; /* Put text above image on mobile */
+    flex-direction: column-reverse;
     text-align: center;
     padding: 50px 0;
-    min-height: auto; /* Remove min-height constraint */
+    min-height: auto;
   }
 
   .hero-content {
     order: 2;
     margin-top: 40px;
-    max-width: 600px; /* Constrain width */
+    max-width: 600px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -966,7 +1018,7 @@ body.dark-mode .footer-bottom {
     order: 1;
     text-align: center;
     margin-bottom: 30px;
-    transform: translateX(0); /* Reset animation transform */
+    transform: translateX(0);
   }
 
   .hero p {
@@ -981,18 +1033,18 @@ body.dark-mode .footer-bottom {
 
   .cta-buttons {
     justify-content: center;
-    display: flex; /* Use flex for center alignment */
-    flex-wrap: wrap; /* Allow wrapping */
+    display: flex;
+    flex-wrap: wrap;
     gap: 15px;
   }
   .btn {
-    margin-right: 0; /* Remove margin for centered buttons */
+    margin-right: 0;
   }
 
   .about-content,
   .contact-content {
     flex-direction: column;
-    gap: 30px; /* Reduce gap */
+    gap: 30px;
   }
 
   .about-image,
@@ -1000,67 +1052,59 @@ body.dark-mode .footer-bottom {
   .contact-info,
   .contact-form {
     width: 100%;
-    margin-bottom: 0; /* Remove bottom margin as gap handles spacing */
-    max-width: 600px; /* Constrain width */
-    margin-left: auto; /* Center */
-    margin-right: auto; /* Center */
-    transform: translate(0, 0); /* Reset animation transforms */
+    margin-bottom: 0;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    transform: translate(0, 0);
   }
 
   .about-text {
-    text-align: center; /* Center text */
+    text-align: center;
   }
   .skills h4 {
-    text-align: left; /* Keep skills title left-aligned */
+    text-align: left;
   }
   .skill-tags {
-    justify-content: center; /* Center skill tags */
+    justify-content: center;
   }
 
   .timeline::after {
-    left: 31px; /* Position line to the left */
+    left: 31px;
     margin-left: 0;
   }
 
   .timeline-item {
     width: 100%;
-    padding-left: 70px; /* Space for dot and line */
-    padding-right: 15px; /* Reduce right padding */
-    left: 0 !important; /* Override inline style */
+    padding-left: 70px;
+    padding-right: 15px;
+    left: 0 !important;
   }
 
   .timeline-item:nth-child(even) {
-    left: 0; /* Ensure all items are on the left */
+    left: 0;
   }
 
   .timeline-content::before {
-    /* Adjust arrow for left-aligned timeline */
     left: -10px;
     right: auto;
     border-width: 10px 10px 10px 0;
     border-color: transparent var(--card-light) transparent transparent;
   }
-  body.dark-mode .timeline-content::before {
+  .dark-mode .timeline-content::before {
     border-color: transparent var(--card-dark) transparent transparent;
   }
 
   .timeline-item::after {
-    /* Adjust dot position */
-    left: 31px; /* Align with the line */
+    left: 31px;
     right: auto;
-    transform: translateX(-50%); /* Center the dot */
+    transform: translateX(-50%);
   }
-  /* Remove odd/even specific ::after rules */
   .timeline-item:nth-child(odd)::after,
   .timeline-item:nth-child(even)::after {
     left: 31px;
     right: auto;
     transform: translateX(-50%);
-  }
-
-  /* Removed timeline ::before rule (the horizontal line connector) */
-  .timeline-item::before {
-    display: none;
   }
 }
 
@@ -1069,16 +1113,16 @@ body.dark-mode .footer-bottom {
     padding: 15px 0;
   }
   main {
-    margin-top: 75px; /* Adjust based on smaller header */
+    margin-top: 75px;
   }
   .nav-container {
-    position: relative; /* Needed for absolute positioning of menu */
+    position: relative;
   }
 
   nav ul {
-    display: none; /* Hide by default */
+    display: none;
     position: absolute;
-    top: 60px; /* Position below header */
+    top: 60px;
     left: 0;
     width: 100%;
     background-color: var(--card-light);
@@ -1090,50 +1134,48 @@ body.dark-mode .footer-bottom {
     border-bottom-right-radius: 8px;
   }
 
-  body.dark-mode nav ul {
+  .dark-mode nav ul {
     background-color: var(--card-dark);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
   }
 
   nav ul.show {
-    display: flex; /* Show when toggled */
+    display: flex;
   }
 
   nav ul li {
-    margin: 0; /* Remove left margin */
+    margin: 0;
     width: 100%;
     text-align: center;
   }
   nav ul li a {
-    padding: 12px 20px; /* Make links easier to tap */
-    display: block; /* Make entire area clickable */
+    padding: 12px 20px;
+    display: block;
     width: 100%;
     box-sizing: border-box;
   }
   nav ul li a::after {
-    /* Remove underline hover effect on mobile */
     display: none;
   }
 
   .mobile-menu-btn {
-    display: block; /* Show hamburger icon */
+    display: block;
   }
 
-  /* Adjust theme toggle position when mobile menu is active */
   .theme-toggle {
-    order: 2; /* Move theme toggle after menu button */
-    margin-left: auto; /* Push toggle to the right */
-    margin-right: 15px; /* Space before menu button */
+    order: 2;
+    margin-left: auto;
+    margin-right: 15px;
   }
   .mobile-menu-btn {
-    order: 3; /* Ensure menu button is last */
+    order: 3;
     margin-left: 0;
   }
 
   .project-cards {
-    grid-template-columns: 1fr; /* Single column */
-    max-width: 450px; /* Limit width on mobile */
-    margin: 0 auto; /* Center single column */
+    grid-template-columns: 1fr;
+    max-width: 450px;
+    margin: 0 auto;
   }
   .section-title h2 {
     font-size: 2.2rem;
@@ -1145,7 +1187,7 @@ body.dark-mode .footer-bottom {
 
 @media (max-width: 480px) {
   .container {
-    width: 90%; /* More space on very small screens */
+    width: 90%;
   }
   h1 {
     font-size: 2.2rem;
@@ -1163,20 +1205,19 @@ body.dark-mode .footer-bottom {
   }
 
   .cta-buttons {
-    /* Already flex and wrapping, just adjust button style */
-    flex-direction: column; /* Stack buttons vertically */
-    align-items: center; /* Center stack */
+    flex-direction: column;
+    align-items: center;
     gap: 15px;
   }
   .btn {
-    width: 100%; /* Make buttons full width */
-    max-width: 300px; /* Limit max width */
+    width: 100%;
+    max-width: 300px;
     margin-right: 0;
     text-align: center;
   }
 
   .footer-links a {
-    margin: 0 10px; /* Less space between footer links */
+    margin: 0 10px;
     font-size: 0.9rem;
   }
   .footer-social a {
@@ -1190,184 +1231,14 @@ body.dark-mode .footer-bottom {
     font-size: 1.5rem;
   }
   form {
-    padding: 20px; /* Less padding on form */
+    padding: 20px;
   }
   .contact-detail {
-    flex-direction: column; /* Stack icon and text */
-    align-items: flex-start; /* Align text left */
-    gap: 10px; /* Space between icon and text */
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
   }
   .contact-icon {
-    margin-right: 0; /* Remove margin */
+    margin-right: 0;
   }
 }
-
-.hero .container {
-  display: flex; /* Enable Flexbox for the container */
-  justify-content: space-between; /* Distribute space between content and image */
-  align-items: center; /* Vertically align items in the center */
-  width: 85%; /* Keep your existing width */
-  max-width: 1200px; /* Keep your existing max-width */
-  margin: 0 auto; /* Keep your existing margin */
-  padding: 80px 0; /* Keep your existing padding */
-}
-
-/* You can remove the flex: 1 from .hero-content and .hero-image if you want more control over their widths, or keep it if you want them to share available space */
-.hero-content {
-  /* flex: 1; */
-  opacity: 0;
-  transform: translateY(30px);
-}
-
-.hero-image {
-  /* flex: 1; */
-  text-align: right; /* Keep the image aligned to the right */
-  opacity: 0;
-  transform: translateX(30px);
-}
-
-.hero .container {
-  display: flex; /* Enable Flexbox */
-  align-items: center; /* Vertically align items */
-  width: 85%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 80px 0;
-}
-
-.hero-image {
-  flex-basis: 25%; /* Set the width to 25% */
-  text-align: right; /* Align image to the right within its 25% width */
-  opacity: 0;
-  transform: translateX(30px);
-}
-
-.hero-content {
-  flex-basis: 50%; /* Set the width to 50% */
-  padding-right: 5%; /* Add some spacing between content and image using padding */
-  opacity: 0;
-  transform: translateY(30px);
-}
-
-/* You might need to adjust the max-width of the image if it's overflowing its container */
-.hero-image img {
-  max-width: 80%; /* Adjust as needed to fit within the 25% width */
-  max-height: 350px;
-  width: auto;
-  height: auto;
-  border-radius: 50%;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  transition: var(--transition);
-  border: 8px solid var(--card-light);
-  object-fit: cover;
-}
-.contact-detail-text p a.linkedin-link {
-  color: #adb5bd; /* Set the text color to light grey */
-  text-decoration: none; /* Remove the underline */
-  transition: color var(--transition); /* Add transition for potential hover effect */
-}
-
-.contact-detail-text p a.linkedin-link:hover {
-  color: var(--primary-color); /* Optional: Add a hover effect */
-  text-decoration: underline; /* Optional: Add underline on hover for better feedback */
-}
-
-/* Hero Section Paragraph */
-.hero p {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
-  max-width: 80%;
-  color: var(--secondary-color);
-  text-align: justify;
-}
-
-body.dark-mode .hero p {
-  color: #adb5bd;
-  text-align: justify;
-}
-
-/* About Section Paragraphs */
-.about-text p {
-  margin-bottom: 20px;
-  line-height: 1.8;
-  text-align: justify;
-}
-
-/* Experience Section Timeline Content Paragraphs */
-.timeline-content p {
-  margin-bottom: 10px;
-  line-height: 1.7;
-  text-align: justify;
-}
-.timeline-content p:last-child {
-  margin-bottom: 0;
-}
-
-/* Project Section Paragraphs */
-.project-info p {
-  color: var(--secondary-color);
-  margin-bottom: 20px;
-  flex-grow: 1;
-  font-size: 0.95rem;
-  text-align: justify;
-}
-
-body.dark-mode .project-info p {
-  color: #adb5bd;
-  text-align: justify;
-}
-
-/* Contact Section Paragraphs */
-.contact-info p {
-  margin-bottom: 30px;
-  line-height: 1.8;
-  text-align: justify;
-}
-
-.contact-detail-text p a[href^="mailto:"] {
-  color: #adb5bd; /* Set the text color to light grey */
-  text-decoration: none; /* Remove the underline */
-  transition: color var(--transition); /* Add transition for potential hover effect */
-}
-
-.contact-detail-text p a[href^="mailto:"]:hover {
-  color: var(--primary-color); /* Optional: Add a hover effect */
-  /* You can add text-decoration: underline; here if you want an underline on hover */
-}
-
-.contact-detail-text p a.location-link {
-  color: #adb5bd; /* Same light grey color */
-  text-decoration: none; /* Remove the underline */
-  transition: color var(--transition); /* Add transition for potential hover effect */
-}
-
-.contact-detail-text p a.location-link:hover {
-  color: var(--primary-color); /* Optional: Hover color */
-  /* You can add text-decoration: underline; here for hover if desired */
-}
-
-.contact-detail-text p a.phone-link {
-  color: #adb5bd; /* Same light grey color */
-  text-decoration: none; /* Remove the underline */
-  transition: color var(--transition); /* Add transition for potential hover effect */
-}
-
-.contact-detail-text p a.phone-link:hover {
-  color: var(--primary-color); /* Optional: Hover color */
-  /* You can add text-decoration: underline; here for hover if desired */
-}
-
-/* Optional: Hyphenation (add below the text-align: justify; lines if desired) */
-/*
-.hero p,
-body.dark-mode .hero p,
-.about-text p,
-.timeline-content p,
-.project-info p,
-body.dark-mode .project-info p,
-.contact-info p {
-  -webkit-hyphens: auto;
-  -moz-hyphens: auto;
-  hyphens: auto;
-}
-*/
