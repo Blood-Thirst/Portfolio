@@ -1,0 +1,1373 @@
+:root {
+  --primary-color: #4a6cf7;
+  --primary-dark: #3a56d4;
+  --secondary-color: #6c757d;
+  --light-bg: #f8f9fa;
+  --dark-bg: #121212;
+  --light-text: #212529;
+  --dark-text: #f8f9fa;
+  --card-light: #ffffff;
+  --card-dark: #1e1e1e;
+  --border-light: #dee2e6;
+  --border-dark: #333333;
+  --transition: all 0.3s ease;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  transition: var(--transition);
+  background-color: var(--light-bg);
+  color: var(--light-text);
+}
+
+body.dark-mode {
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
+}
+
+/* Header & Navigation */
+header {
+  padding: 20px 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--card-light);
+  transition: var(--transition);
+}
+
+body.dark-mode header {
+  background-color: var(--card-dark);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.container {
+  width: 85%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  margin-left: 30px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: var(--light-text);
+  font-weight: 500;
+  transition: var(--transition);
+  position: relative;
+}
+
+body.dark-mode nav ul li a {
+  color: var(--dark-text);
+}
+
+nav ul li a:hover {
+  color: var(--primary-color);
+}
+
+nav ul li a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary-color);
+  transition: var(--transition);
+}
+
+nav ul li a:hover::after {
+  width: 100%;
+}
+
+.theme-toggle {
+  cursor: pointer;
+  font-size: 20px;
+  color: var(--light-text);
+  transition: var(--transition);
+  margin-left: 30px; /* Added margin for spacing */
+}
+
+body.dark-mode .theme-toggle {
+  color: var(--dark-text);
+}
+
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--light-text);
+  margin-left: 15px; /* Added margin for spacing */
+}
+
+body.dark-mode .mobile-menu-btn {
+  color: var(--dark-text);
+}
+
+/* Main Content */
+main {
+  margin-top: 90px; /* Adjust based on header height */
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  align-items: center;
+  padding: 80px 0;
+  min-height: calc(100vh - 90px); /* Adjust based on header height */
+  box-sizing: border-box; /* Include padding in height calculation */
+}
+
+.hero-content {
+  flex: 1;
+  opacity: 0;
+  transform: translateY(30px);
+  /* Initial state for animation - will be overridden by JS on load */
+}
+
+.hero-image {
+  flex: 1;
+  text-align: right;
+  opacity: 0;
+  transform: translateX(30px);
+  /* Initial state for animation - will be overridden by JS on load */
+}
+
+.hero-image img {
+  max-width: 80%;
+  /* Adjusted width for potentially smaller screens */
+  max-height: 350px; /* Added max-height */
+  width: auto; /* Maintain aspect ratio */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 50%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: var(--transition);
+  border: 8px solid var(--card-light);
+  object-fit: cover; /* Ensure image covers the area */
+}
+
+body.dark-mode .hero-image img {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  border-color: var(--card-dark);
+}
+
+h1 {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+h1 span {
+  color: var(--primary-color);
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  max-width: 80%;
+  color: var(--secondary-color);
+}
+
+body.dark-mode .hero p {
+  color: #adb5bd;
+}
+
+.social-links {
+  display: flex;
+  margin-top: 30px;
+}
+
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 50%;
+  margin-right: 15px;
+  transition: var(--transition);
+  text-decoration: none; /* Ensure icons are not underlined */
+}
+
+.social-links a:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-5px);
+}
+
+.cta-buttons {
+  margin-top: 40px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 30px;
+  background-color: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: var(--transition);
+  margin-right: 15px;
+  border: 2px solid var(--primary-color);
+  margin-bottom: 10px; /* Added for stacking on small screens */
+}
+
+.btn:hover {
+  background-color: var(--primary-dark);
+  border-color: var(--primary-dark); /* Ensure border color changes too */
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(74, 108, 247, 0.2);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--light-text);
+  border: 2px solid var(--primary-color);
+}
+
+body.dark-mode .btn-outline {
+  color: var(--dark-text);
+}
+
+.btn-outline:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+/* About Section */
+.about {
+  padding: 100px 0;
+  background-color: var(--card-light);
+  transition: var(--transition);
+}
+
+body.dark-mode .about {
+  background-color: var(--card-dark);
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 60px;
+  position: relative;
+}
+
+.section-title h2 {
+  font-size: 2.5rem;
+  color: var(--light-text);
+  margin-bottom: 20px; /* Increased margin */
+  display: inline-block; /* Needed for ::after positioning relative to text */
+  position: relative; /* Needed for ::after positioning */
+}
+
+body.dark-mode .section-title h2 {
+  color: var(--dark-text);
+}
+
+.section-title h2::after {
+  content: "";
+  position: absolute;
+  width: 80px;
+  height: 4px;
+  background-color: var(--primary-color);
+  bottom: -15px; /* Adjusted position */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.about-content {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 40px; /* Added gap */
+}
+
+.about-image {
+  flex: 1;
+  min-width: 300px;
+  opacity: 0;
+  transform: translateX(-30px);
+  text-align: center; /* Center image */
+}
+
+.about-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px; /* Added border radius */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Added subtle shadow */
+}
+
+body.dark-mode .about-image img {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.about-image.animate {
+  animation: fadeInLeft 1s forwards;
+}
+
+.about-text {
+  flex: 1;
+  /* padding: 0 30px; No padding needed due to gap */
+  min-width: 300px;
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+.about-text.animate {
+  animation: fadeInRight 1s forwards;
+}
+
+.about-text h3 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: var(--primary-color); /* Added color */
+}
+
+.about-text p {
+  margin-bottom: 20px;
+  line-height: 1.8;
+}
+
+.skills {
+  margin-top: 30px;
+}
+
+.skills h4 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skill-tag {
+  background-color: rgba(74, 108, 247, 0.1);
+  color: var(--primary-color);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  transition: var(--transition);
+  cursor: default; /* Indicate non-interactive */
+}
+
+.skill-tag:hover {
+  background-color: var(--primary-color);
+  color: white;
+  transform: translateY(-3px);
+}
+
+/* Experience Section */
+.experience {
+  padding: 100px 0;
+  transition: var(--transition);
+}
+
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.timeline::after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  background-color: var(--primary-color);
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -2px;
+  z-index: 0; /* Ensure line is behind items */
+}
+
+.timeline-item {
+  padding: 10px 40px;
+  position: relative;
+  width: 50%;
+  box-sizing: border-box;
+  opacity: 0;
+  transform: translateY(30px);
+  margin-bottom: 40px; /* Added margin between items */
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0; /* No margin for the last item */
+}
+
+.timeline-item.animate {
+  animation: fadeInUp 1s forwards;
+}
+
+.timeline-item:nth-child(odd) {
+  left: 0;
+  padding-right: 25px; /* Add padding for arrow */
+}
+
+.timeline-item:nth-child(even) {
+  left: 50%;
+  padding-left: 25px; /* Add padding for arrow */
+}
+
+.timeline-content {
+  padding: 30px;
+  background-color: var(--card-light);
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: var(--transition);
+  position: relative; /* Needed for arrow */
+  z-index: 1; /* Ensure content is above line */
+}
+
+/* Timeline arrow (optional, enhances visual connection) */
+.timeline-content::before {
+  content: "";
+  position: absolute;
+  top: 30px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.timeline-item:nth-child(odd) .timeline-content::before {
+  right: -10px; /* Position arrow pointing right */
+  border-width: 10px 0 10px 10px;
+  border-color: transparent transparent transparent var(--card-light);
+}
+
+.timeline-item:nth-child(even) .timeline-content::before {
+  left: -10px; /* Position arrow pointing left */
+  border-width: 10px 10px 10px 0;
+  border-color: transparent var(--card-light) transparent transparent;
+}
+
+body.dark-mode .timeline-item:nth-child(odd) .timeline-content::before {
+  border-color: transparent transparent transparent var(--card-dark);
+}
+body.dark-mode .timeline-item:nth-child(even) .timeline-content::before {
+  border-color: transparent var(--card-dark) transparent transparent;
+}
+
+body.dark-mode .timeline-content {
+  background-color: var(--card-dark);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.timeline-content:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+body.dark-mode .timeline-content:hover {
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Timeline Dot */
+.timeline-item::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: var(--primary-color);
+  border: 4px solid var(--light-bg); /* Creates a 'hollow' effect */
+  border-radius: 50%;
+  top: 35px; /* Adjust vertical position */
+  right: -10px; /* Center on the line */
+  transform: translateX(-50%);
+  z-index: 2; /* Ensure dot is above line and content arrow */
+}
+
+body.dark-mode .timeline-item::after {
+  border-color: var(--dark-bg);
+}
+
+.timeline-item:nth-child(odd)::after {
+  right: -10px;
+  left: auto;
+  transform: translateX(50%);
+}
+
+.timeline-item:nth-child(even)::after {
+  left: -10px;
+  right: auto;
+  transform: translateX(-50%);
+}
+
+/* Removed timeline ::before rule as it's not needed with the dot/arrow approach */
+
+.timeline-content h3 {
+  margin-top: 0;
+  color: var(--primary-color);
+  font-size: 1.4rem; /* Slightly larger */
+}
+
+.timeline-content .date {
+  color: var(--secondary-color);
+  font-style: italic;
+  margin-bottom: 15px;
+  display: block;
+  font-size: 0.9rem; /* Slightly smaller */
+}
+
+body.dark-mode .timeline-content .date {
+  color: #adb5bd;
+}
+
+.timeline-content p {
+  margin-bottom: 10px; /* Less margin between paragraphs */
+  line-height: 1.7;
+}
+.timeline-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* Projects Section */
+.projects {
+  padding: 100px 0;
+  background-color: var(--card-light);
+  transition: var(--transition);
+}
+
+body.dark-mode .projects {
+  background-color: var(--card-dark);
+}
+
+.project-cards {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(320px, 1fr)
+  ); /* Adjusted minmax */
+  gap: 30px;
+}
+
+.project-card {
+  background-color: var(--light-bg);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: var(--transition);
+  opacity: 0;
+  transform: translateY(30px);
+  display: flex; /* Added flex */
+  flex-direction: column; /* Stack image and info */
+}
+
+.project-card.animate {
+  animation: fadeInUp 1s forwards;
+  /* Apply delay based on index? - More complex, requires JS */
+}
+
+body.dark-mode .project-card {
+  background-color: var(--dark-bg);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-dark); /* Subtle border in dark mode */
+}
+
+.project-card:hover {
+  transform: translateY(-10px) scale(1.03); /* Added subtle scale */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+body.dark-mode .project-card:hover {
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+.project-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block; /* Remove extra space below image */
+}
+
+.project-info {
+  padding: 25px;
+  flex-grow: 1; /* Allow info to take remaining space */
+  display: flex; /* Use flex for inner content */
+  flex-direction: column; /* Stack title, p, tags */
+}
+
+.project-info h3 {
+  margin-top: 0;
+  margin-bottom: 15px; /* Added margin */
+  color: var(--light-text);
+  transition: var(--transition);
+  font-size: 1.3rem; /* Adjusted size */
+}
+
+body.dark-mode .project-info h3 {
+  color: var(--dark-text);
+}
+
+.project-info p {
+  color: var(--secondary-color);
+  margin-bottom: 20px;
+  flex-grow: 1; /* Allow paragraph to push tags down */
+  font-size: 0.95rem; /* Adjusted size */
+}
+
+body.dark-mode .project-info p {
+  color: #adb5bd;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto; /* Push tags to the bottom */
+}
+
+.project-tag {
+  font-size: 0.8rem;
+  padding: 5px 12px; /* Adjusted padding */
+  background-color: rgba(74, 108, 247, 0.1);
+  color: var(--primary-color);
+  border-radius: 15px;
+  cursor: default;
+}
+
+/* Contact Section */
+.contact {
+  padding: 100px 0;
+  transition: var(--transition);
+}
+
+.contact-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 50px;
+}
+
+.contact-info {
+  flex: 1;
+  min-width: 300px;
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
+.contact-info.animate {
+  animation: fadeInLeft 1s forwards;
+}
+
+.contact-form {
+  flex: 1;
+  min-width: 300px;
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+.contact-form.animate {
+  animation: fadeInRight 1s forwards;
+}
+
+.contact-info h3 {
+  margin-bottom: 30px;
+  font-size: 1.8rem;
+}
+
+.contact-info p {
+  margin-bottom: 30px;
+  line-height: 1.8;
+}
+
+.contact-details {
+  margin-top: 30px;
+}
+
+.contact-detail {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.contact-icon {
+  width: 50px;
+  height: 50px;
+  background-color: rgba(74, 108, 247, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+  color: var(--primary-color);
+  font-size: 1.2rem;
+  transition: var(--transition);
+  flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+.contact-detail:hover .contact-icon {
+  background-color: var(--primary-color);
+  color: white;
+  transform: scale(1.1);
+}
+
+.contact-detail-text h4 {
+  margin: 0 0 5px 0;
+  font-size: 1.2rem;
+}
+
+.contact-detail-text p {
+  margin: 0;
+  color: var(--secondary-color);
+  word-break: break-word; /* Break long emails/links */
+}
+
+body.dark-mode .contact-detail-text p {
+  color: #adb5bd;
+}
+
+form {
+  background-color: var(--card-light);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: var(--transition);
+}
+
+body.dark-mode form {
+  background-color: var(--card-dark);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid var(--border-light);
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: var(--transition);
+  background-color: var(--light-bg);
+  color: var(--light-text);
+  box-sizing: border-box; /* Include padding in width */
+}
+
+body.dark-mode .form-control {
+  border-color: var(--border-dark);
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.2);
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 150px;
+}
+
+.submit-btn {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: var(--transition);
+  width: 100%;
+  border: 2px solid var(--primary-color); /* Added border */
+}
+
+.submit-btn:hover {
+  background-color: var(--primary-dark);
+  border-color: var(--primary-dark); /* Match border */
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(74, 108, 247, 0.2);
+}
+
+/* Footer */
+footer {
+  background-color: var(--card-light);
+  padding: 60px 0 30px;
+  text-align: center;
+  transition: var(--transition);
+  border-top: 1px solid var(--border-light); /* Added top border */
+}
+
+body.dark-mode footer {
+  background-color: var(--card-dark);
+  border-top-color: var(--border-dark);
+}
+
+.footer-content {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 15px; /* Add padding for smaller screens */
+}
+
+.footer-logo {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.footer-social {
+  margin: 20px 0;
+}
+
+.footer-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(74, 108, 247, 0.1);
+  color: var(--primary-color);
+  border-radius: 50%;
+  margin: 0 10px;
+  transition: var(--transition);
+  text-decoration: none;
+}
+
+.footer-social a:hover {
+  background-color: var(--primary-color);
+  color: white;
+  transform: translateY(-5px);
+}
+
+.footer-links {
+  margin: 30px 0;
+}
+
+.footer-links a {
+  color: var(--light-text);
+  margin: 0 15px;
+  text-decoration: none;
+  transition: var(--transition);
+  font-size: 0.95rem;
+}
+
+body.dark-mode .footer-links a {
+  color: var(--dark-text);
+}
+
+.footer-links a:hover {
+  color: var(--primary-color);
+}
+
+.footer-bottom {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-light);
+  color: var(--secondary-color);
+  font-size: 0.9rem;
+}
+
+body.dark-mode .footer-bottom {
+  border-top-color: var(--border-dark);
+  color: #adb5bd;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 991px) {
+  h1 {
+    font-size: 2.8rem; /* Slightly smaller on medium screens */
+  }
+
+  .hero {
+    flex-direction: column-reverse; /* Put text above image on mobile */
+    text-align: center;
+    padding: 50px 0;
+    min-height: auto; /* Remove min-height constraint */
+  }
+
+  .hero-content {
+    order: 2;
+    margin-top: 40px;
+    max-width: 600px; /* Constrain width */
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-image {
+    order: 1;
+    text-align: center;
+    margin-bottom: 30px;
+    transform: translateX(0); /* Reset animation transform */
+  }
+
+  .hero p {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .social-links {
+    justify-content: center;
+  }
+
+  .cta-buttons {
+    justify-content: center;
+    display: flex; /* Use flex for center alignment */
+    flex-wrap: wrap; /* Allow wrapping */
+    gap: 15px;
+  }
+  .btn {
+    margin-right: 0; /* Remove margin for centered buttons */
+  }
+
+  .about-content,
+  .contact-content {
+    flex-direction: column;
+    gap: 30px; /* Reduce gap */
+  }
+
+  .about-image,
+  .about-text,
+  .contact-info,
+  .contact-form {
+    width: 100%;
+    margin-bottom: 0; /* Remove bottom margin as gap handles spacing */
+    max-width: 600px; /* Constrain width */
+    margin-left: auto; /* Center */
+    margin-right: auto; /* Center */
+    transform: translate(0, 0); /* Reset animation transforms */
+  }
+
+  .about-text {
+    text-align: center; /* Center text */
+  }
+  .skills h4 {
+    text-align: left; /* Keep skills title left-aligned */
+  }
+  .skill-tags {
+    justify-content: center; /* Center skill tags */
+  }
+
+  .timeline::after {
+    left: 31px; /* Position line to the left */
+    margin-left: 0;
+  }
+
+  .timeline-item {
+    width: 100%;
+    padding-left: 70px; /* Space for dot and line */
+    padding-right: 15px; /* Reduce right padding */
+    left: 0 !important; /* Override inline style */
+  }
+
+  .timeline-item:nth-child(even) {
+    left: 0; /* Ensure all items are on the left */
+  }
+
+  .timeline-content::before {
+    /* Adjust arrow for left-aligned timeline */
+    left: -10px;
+    right: auto;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent var(--card-light) transparent transparent;
+  }
+  body.dark-mode .timeline-content::before {
+    border-color: transparent var(--card-dark) transparent transparent;
+  }
+
+  .timeline-item::after {
+    /* Adjust dot position */
+    left: 31px; /* Align with the line */
+    right: auto;
+    transform: translateX(-50%); /* Center the dot */
+  }
+  /* Remove odd/even specific ::after rules */
+  .timeline-item:nth-child(odd)::after,
+  .timeline-item:nth-child(even)::after {
+    left: 31px;
+    right: auto;
+    transform: translateX(-50%);
+  }
+
+  /* Removed timeline ::before rule (the horizontal line connector) */
+  .timeline-item::before {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    padding: 15px 0;
+  }
+  main {
+    margin-top: 75px; /* Adjust based on smaller header */
+  }
+  .nav-container {
+    position: relative; /* Needed for absolute positioning of menu */
+  }
+
+  nav ul {
+    display: none; /* Hide by default */
+    position: absolute;
+    top: 60px; /* Position below header */
+    left: 0;
+    width: 100%;
+    background-color: var(--card-light);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    padding: 15px 0;
+    z-index: 999;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+
+  body.dark-mode nav ul {
+    background-color: var(--card-dark);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  nav ul.show {
+    display: flex; /* Show when toggled */
+  }
+
+  nav ul li {
+    margin: 0; /* Remove left margin */
+    width: 100%;
+    text-align: center;
+  }
+  nav ul li a {
+    padding: 12px 20px; /* Make links easier to tap */
+    display: block; /* Make entire area clickable */
+    width: 100%;
+    box-sizing: border-box;
+  }
+  nav ul li a::after {
+    /* Remove underline hover effect on mobile */
+    display: none;
+  }
+
+  .mobile-menu-btn {
+    display: block; /* Show hamburger icon */
+  }
+
+  /* Adjust theme toggle position when mobile menu is active */
+  .theme-toggle {
+    order: 2; /* Move theme toggle after menu button */
+    margin-left: auto; /* Push toggle to the right */
+    margin-right: 15px; /* Space before menu button */
+  }
+  .mobile-menu-btn {
+    order: 3; /* Ensure menu button is last */
+    margin-left: 0;
+  }
+
+  .project-cards {
+    grid-template-columns: 1fr; /* Single column */
+    max-width: 450px; /* Limit width on mobile */
+    margin: 0 auto; /* Center single column */
+  }
+  .section-title h2 {
+    font-size: 2.2rem;
+  }
+  .about-text h3 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: 90%; /* More space on very small screens */
+  }
+  h1 {
+    font-size: 2.2rem;
+  }
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .section-title h2 {
+    font-size: 1.8rem;
+  }
+  .section-title h2::after {
+    width: 60px;
+    bottom: -10px;
+  }
+
+  .cta-buttons {
+    /* Already flex and wrapping, just adjust button style */
+    flex-direction: column; /* Stack buttons vertically */
+    align-items: center; /* Center stack */
+    gap: 15px;
+  }
+  .btn {
+    width: 100%; /* Make buttons full width */
+    max-width: 300px; /* Limit max width */
+    margin-right: 0;
+    text-align: center;
+  }
+
+  .footer-links a {
+    margin: 0 10px; /* Less space between footer links */
+    font-size: 0.9rem;
+  }
+  .footer-social a {
+    margin: 0 8px;
+  }
+  .footer-bottom p {
+    font-size: 0.85rem;
+  }
+
+  .contact-info h3 {
+    font-size: 1.5rem;
+  }
+  form {
+    padding: 20px; /* Less padding on form */
+  }
+  .contact-detail {
+    flex-direction: column; /* Stack icon and text */
+    align-items: flex-start; /* Align text left */
+    gap: 10px; /* Space between icon and text */
+  }
+  .contact-icon {
+    margin-right: 0; /* Remove margin */
+  }
+}
+
+.hero .container {
+  display: flex; /* Enable Flexbox for the container */
+  justify-content: space-between; /* Distribute space between content and image */
+  align-items: center; /* Vertically align items in the center */
+  width: 85%; /* Keep your existing width */
+  max-width: 1200px; /* Keep your existing max-width */
+  margin: 0 auto; /* Keep your existing margin */
+  padding: 80px 0; /* Keep your existing padding */
+}
+
+/* You can remove the flex: 1 from .hero-content and .hero-image if you want more control over their widths, or keep it if you want them to share available space */
+.hero-content {
+  /* flex: 1; */
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.hero-image {
+  /* flex: 1; */
+  text-align: right; /* Keep the image aligned to the right */
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+.hero .container {
+  display: flex; /* Enable Flexbox */
+  align-items: center; /* Vertically align items */
+  width: 85%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 0;
+}
+
+.hero-image {
+  flex-basis: 25%; /* Set the width to 25% */
+  text-align: right; /* Align image to the right within its 25% width */
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+.hero-content {
+  flex-basis: 50%; /* Set the width to 50% */
+  padding-right: 5%; /* Add some spacing between content and image using padding */
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* You might need to adjust the max-width of the image if it's overflowing its container */
+.hero-image img {
+  max-width: 80%; /* Adjust as needed to fit within the 25% width */
+  max-height: 350px;
+  width: auto;
+  height: auto;
+  border-radius: 50%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: var(--transition);
+  border: 8px solid var(--card-light);
+  object-fit: cover;
+}
+.contact-detail-text p a.linkedin-link {
+  color: #adb5bd; /* Set the text color to light grey */
+  text-decoration: none; /* Remove the underline */
+  transition: color var(--transition); /* Add transition for potential hover effect */
+}
+
+.contact-detail-text p a.linkedin-link:hover {
+  color: var(--primary-color); /* Optional: Add a hover effect */
+  text-decoration: underline; /* Optional: Add underline on hover for better feedback */
+}
+
+/* Hero Section Paragraph */
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  max-width: 80%;
+  color: var(--secondary-color);
+  text-align: justify;
+}
+
+body.dark-mode .hero p {
+  color: #adb5bd;
+  text-align: justify;
+}
+
+/* About Section Paragraphs */
+.about-text p {
+  margin-bottom: 20px;
+  line-height: 1.8;
+  text-align: justify;
+}
+
+/* Experience Section Timeline Content Paragraphs */
+.timeline-content p {
+  margin-bottom: 10px;
+  line-height: 1.7;
+  text-align: justify;
+}
+.timeline-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* Project Section Paragraphs */
+.project-info p {
+  color: var(--secondary-color);
+  margin-bottom: 20px;
+  flex-grow: 1;
+  font-size: 0.95rem;
+  text-align: justify;
+}
+
+body.dark-mode .project-info p {
+  color: #adb5bd;
+  text-align: justify;
+}
+
+/* Contact Section Paragraphs */
+.contact-info p {
+  margin-bottom: 30px;
+  line-height: 1.8;
+  text-align: justify;
+}
+
+.contact-detail-text p a[href^="mailto:"] {
+  color: #adb5bd; /* Set the text color to light grey */
+  text-decoration: none; /* Remove the underline */
+  transition: color var(--transition); /* Add transition for potential hover effect */
+}
+
+.contact-detail-text p a[href^="mailto:"]:hover {
+  color: var(--primary-color); /* Optional: Add a hover effect */
+  /* You can add text-decoration: underline; here if you want an underline on hover */
+}
+
+.contact-detail-text p a.location-link {
+  color: #adb5bd; /* Same light grey color */
+  text-decoration: none; /* Remove the underline */
+  transition: color var(--transition); /* Add transition for potential hover effect */
+}
+
+.contact-detail-text p a.location-link:hover {
+  color: var(--primary-color); /* Optional: Hover color */
+  /* You can add text-decoration: underline; here for hover if desired */
+}
+
+.contact-detail-text p a.phone-link {
+  color: #adb5bd; /* Same light grey color */
+  text-decoration: none; /* Remove the underline */
+  transition: color var(--transition); /* Add transition for potential hover effect */
+}
+
+.contact-detail-text p a.phone-link:hover {
+  color: var(--primary-color); /* Optional: Hover color */
+  /* You can add text-decoration: underline; here for hover if desired */
+}
+
+/* Optional: Hyphenation (add below the text-align: justify; lines if desired) */
+/*
+.hero p,
+body.dark-mode .hero p,
+.about-text p,
+.timeline-content p,
+.project-info p,
+body.dark-mode .project-info p,
+.contact-info p {
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+}
+*/
